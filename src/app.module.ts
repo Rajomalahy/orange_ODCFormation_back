@@ -16,8 +16,19 @@ import { User } from './users/user.entity';
         username: config.get('DB_USERNAME'),
         password: config.get('DB_PASSWORD'),
         database: config.get('DB_NAME'),
+
+        ssl: {
+          rejectUnauthorized: false,
+        },
+        extra: {
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        },
+        autoLoadEntities: true,
+  
         entities: [User],
-        synchronize: true, // ⚠️ à désactiver en production
+        synchronize: true, 
       }),
       inject: [ConfigService],
     }),
